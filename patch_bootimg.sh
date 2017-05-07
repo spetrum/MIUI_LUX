@@ -10,7 +10,6 @@ mkdir -p $TARGET_BOOT_DIR/ramdisk
 cd $TARGET_BOOT_DIR/ramdisk
 cpio -i < ../boot.img-ramdisk
 cd - > /dev/null
-
 if [ -d overlay/boot/ramdisk ];then
 cp -rf overlay/boot/ramdisk/* $TARGET_BOOT_DIR/ramdisk/
 fi
@@ -21,11 +20,11 @@ OLDCMDLINE=$(cat $TARGET_BOOT_DIR/boot.img-cmdline)
 NEWCMDLINE="androidboot.selinux=permissive"
 for prop in $OLDCMDLINE
 do
-  echo $prop | grep "androidboot.selinux=" > /dev/null
-  if [ $? -eq 0 ];then
-    continue
-  fi
-  NEWCMDLINE="$NEWCMDLINE $prop"
+    echo $prop | grep "androidboot.selinux=" > /dev/null
+    if [ $? -eq 0 ];then
+        continue
+    fi
+    NEWCMDLINE="$NEWCMDLINE $prop"
 done
 
 echo "NEWCMDLINE: $NEWCMDLINE"
