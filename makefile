@@ -56,6 +56,8 @@ local-pre-zip-misc:
 	#@echo Update boot.img
 	#cp -rf other/boot.img $(ZIP_DIR)/boot.img
 	#cp -rf other/system $(ZIP_DIR)/
+	@echo Copying files
+	$(hide) cp -rf other/system $(ZIP_DIR)/
 
 	@echo goodbye! miui prebuilt binaries!
 	rm -rf $(ZIP_DIR)/system/bin/app_process32_vendor
