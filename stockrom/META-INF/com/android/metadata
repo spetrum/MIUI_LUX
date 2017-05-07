@@ -1,0 +1,3 @@
+post-build=Motorola/lux/lux:6.0.1/MOB31K/b7ab1780d1:userdebug/test-keys
+post-timestamp=1482286231
+pre-device=lux
