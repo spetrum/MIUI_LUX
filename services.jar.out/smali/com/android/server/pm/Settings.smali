@@ -10542,6 +10542,12 @@
     iget-object v0, v0, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     if-eqz v0, :cond_0
+    
+    invoke-static {v7, p3}, Lcom/android/server/pm/SettingsInjector;->checkXSpaceApp(Lcom/android/server/pm/PackageSetting;I)Z
+    
+    move-result v0
+    
+    if-nez v0, :cond_miui_0
 
     .line 3961
     iget v0, v6, Lcom/android/server/pm/PackageSetting;->pkgFlags:I
@@ -10560,8 +10566,9 @@
     .line 3963
     :goto_1
     invoke-virtual {v6, v8, p3}, Lcom/android/server/pm/PackageSetting;->setInstalled(ZI)V
-
+    
     .line 3965
+    :cond_miui_0
     iget-object v1, v6, Lcom/android/server/pm/PackageSetting;->volumeUuid:Ljava/lang/String;
 
     iget-object v2, v6, Lcom/android/server/pm/PackageSetting;->name:Ljava/lang/String;
